@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="default">
+    <!-- Disable gravity -->
+    <gravity>0 0 -9.8</gravity>
+
+    <!-- Physics engine -->
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <!-- Scene lighting -->
+    <scene>
+      <ambient>0.5 0.5 0.5 1</ambient>
+      <background>0.7 0.7 0.8 1</background>
+      <shadows>true</shadows>
+    </scene>
+
+    <!-- Ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Sunlight -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- ✅ Gazebo Sim (Ignition) ROS 2 Control Plugin ->
+    <plugin
+      filename="libgz_ros2_control-system.so"
+      name="gz_ros2_control::IgnitionROS2ControlPlugin">
+      <!- Optional: you can specify the ROS parameters file ->
+      <ros>
+        <parameters>/home/samarpan/pet_bot/install/pet_bot_test5/share/pet_bot_test5/config/pet_bot_controllers.yaml</parameters>
+      </ros>
+    </plugin>
+    <gazebo>
+    <plugin
+        filename="libgz_ros2_control-system.so"
+        name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+    </plugin>
+    </gazebo-->
+
+  </world>
+</sdf>

@@ -1,0 +1,1197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="pet_bot_test5">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.00113291682806678 0.00312887171663282 -0.0086784545054986"
+        rpy="0 0 0" />
+      <mass
+        value="0.5" />
+      <inertia
+        ixx="0.000428558923538308"
+        ixy="2.71016532559896E-08"
+        ixz="-7.42171927160237E-08"
+        iyy="0.000104687926825432"
+        iyz="-1.98122646645251E-07"
+        izz="0.000444638895048129" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="servob1_Link">
+    <inertial>
+      <origin
+        xyz="-0.00701432076675637 0.00173887497261635 -0.020433367504248"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="1.19698461100588E-06"
+        ixy="3.9574662947928E-07"
+        ixz="-2.96139129159455E-08"
+        iyy="2.69524925866603E-06"
+        iyz="7.34142461360652E-09"
+        izz="2.99382347760638E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servob1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servob1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servob1"
+    type="fixed">
+    <origin
+      xyz="0.045000000000001 0.071749999999999 0"
+      rpy="-1.5707963267949 -1.3277916145548 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="servob1_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="servoroter1_Link">
+    <inertial>
+      <origin
+        xyz="-0.0100559123880472 0.00682081914657511 0.0267496570748604"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="6.05244658456117E-06"
+        ixy="-1.4919876317334E-08"
+        ixz="-3.25314692215755E-09"
+        iyy="7.61118741914552E-06"
+        iyz="2.7247178985995E-09"
+        izz="4.16807369969767E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servoroter1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servoroter1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servoroter1"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="servob1_Link" />
+    <child
+      link="servoroter1_Link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="30.0"
+      velocity="5.0" />
+  </joint>
+  <link
+    name="upperlegb1_Link">
+    <inertial>
+      <origin
+        xyz="0.00835618386954183 -0.0442831117998646 0.00154905531270663"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="3.87692358553123E-05"
+        ixy="-5.25240045915491E-07"
+        ixz="1.79115061934609E-08"
+        iyy="1.8127419400765E-06"
+        iyz="1.28353535240189E-06"
+        izz="3.84023070776096E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/upperlegb1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/upperlegb1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="upperlegb1"
+    type="revolute">
+    <origin
+      xyz="0 0.0469999999999999 0.036900000000006"
+      rpy="-0.725006133955254 0 -1.5707963267949" />
+    <parent
+      link="servoroter1_Link" />
+    <child
+      link="upperlegb1_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="30.0"
+      velocity="5.0" />
+  </joint>
+  <link
+    name="lowerlegb1_Link">
+    <inertial>
+      <origin
+        xyz="-0.00822371298307881 -0.00964097280504403 0.0595272135564797"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="3.46191495626911E-05"
+        ixy="5.37318214914926E-08"
+        ixz="-3.54568032865945E-07"
+        iyy="3.41578318504933E-05"
+        iyz="1.29770954748404E-06"
+        izz="1.27772857222064E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/lowerlegb1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/lowerlegb1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lowerlegb1"
+    type="revolute">
+    <origin
+      xyz="0 -0.0999387312306895 0.00350000000000002"
+      rpy="3.14159265358979 0 -3.14159265358979" />
+    <parent
+      link="upperlegb1_Link" />
+    <child
+      link="lowerlegb1_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="30.0"
+      velocity="5.0" />
+  </joint>
+  <link
+    name="servof1_Link">
+    <inertial>
+      <origin
+        xyz="-0.00204892481026133 0.00693010022375108 -0.0204333675042481"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="2.65714473391169E-06"
+        ixy="4.60710432151016E-07"
+        ixz="-8.65037362410885E-09"
+        iyy="1.23508913576022E-06"
+        iyz="2.92583558956171E-08"
+        izz="2.99382347760638E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servof1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servof1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servof1"
+    type="fixed">
+    <origin
+      xyz="0.045000000000001 -0.071750000000002 0"
+      rpy="-1.5707963267949 -0.287466448416683 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="servof1_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="servoroterf1_Link">
+    <inertial>
+      <origin
+        xyz="-0.00682082050878034 0.0100559143826442 0.0267496504429119"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="7.61118615271098E-06"
+        ixy="-1.49200557758613E-08"
+        ixz="-2.72471140451307E-09"
+        iyy="6.05244642310124E-06"
+        iyz="3.25381222981396E-09"
+        izz="4.1680724966145E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servoroterf1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servoroterf1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servoroterf1"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="servof1_Link" />
+    <child
+      link="servoroterf1_Link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="30.0"
+      velocity="5.0" />
+  </joint>
+  <link
+    name="upperlegf1_Link">
+    <inertial>
+      <origin
+        xyz="-0.00837007622484405 -0.0441393776469056 -0.00154402752402555"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="3.87694300465117E-05"
+        ixy="5.25239783949239E-07"
+        ixz="1.79115472540234E-08"
+        iyy="1.8147351525034E-06"
+        iyz="-1.28353541603687E-06"
+        izz="3.84042992908496E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/upperlegf1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/upperlegf1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="upperlegf1"
+    type="revolute">
+    <origin
+      xyz="-0.0469999999999993 0 0.016899999999999"
+      rpy="0.728026894968978 0 3.14159265358979" />
+    <parent
+      link="servoroterf1_Link" />
+    <child
+      link="upperlegf1_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="30.0"
+      velocity="5.0" />
+  </joint>
+  <link
+    name="lowerlegf1_Link">
+    <inertial>
+      <origin
+        xyz="-0.00808156160789165 -0.00683516479434983 0.0590456349157834"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="3.46221596650123E-05"
+        ixy="3.76142374234176E-08"
+        ixz="-3.56638687909695E-07"
+        iyy="3.42121838898271E-05"
+        iyz="-1.95608449870027E-07"
+        izz="1.23212461913626E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/lowerlegf1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/lowerlegf1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lowerlegf1"
+    type="revolute">
+    <origin
+      xyz="0 -0.099939 -0.0035"
+      rpy="0 0 0" />
+    <parent
+      link="upperlegf1_Link" />
+    <child
+      link="lowerlegf1_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="30.0"
+      velocity="5.0" />
+  </joint>
+  <link
+    name="servof2_Link">
+    <inertial>
+      <origin
+        xyz="0.00220702602674092 -0.0068813819910413 0.0164333675042481"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="2.63531220682239E-06"
+        ixy="4.92772270346873E-07"
+        ixz="-9.3179216290144E-09"
+        iyy="1.25692166284952E-06"
+        iyz="2.90526537525713E-08"
+        izz="2.99382347760638E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servof2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servof2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servof2"
+    type="fixed">
+    <origin
+      xyz="-0.044999999999999 -0.06775 0"
+      rpy="1.5707963267949 0.310359931259129 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="servof2_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="servoroterf2_Link">
+    <inertial>
+      <origin
+        xyz="0.00682081900590156 -0.0100559124298178 -0.0307496570726056"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="7.61118723258511E-06"
+        ixy="-1.49198755757258E-08"
+        ixz="-2.72471748931254E-09"
+        iyy="6.05244640914838E-06"
+        iyz="3.25314455081723E-09"
+        izz="4.16807369396949E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servoroterf2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servoroterf2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servoroterf2"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="servof2_Link" />
+    <child
+      link="servoroterf2_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="30.0"
+      velocity="5.0" />
+  </joint>
+  <link
+    name="upperlegf2_Link">
+    <inertial>
+      <origin
+        xyz="-0.00837007608558005 0.0441392530184052 -0.00154761894378383"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="3.87694309112291E-05"
+        ixy="-5.25206365912559E-07"
+        ixz="1.88766446977379E-08"
+        iyy="1.8146595270917E-06"
+        iyz="1.28245700501455E-06"
+        izz="3.84043758198065E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/upperlegf2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/upperlegf2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="upperlegf2"
+    type="revolute">
+    <origin
+      xyz="0.0469999999999978 0 -0.020900000000001"
+      rpy="2.40379177778919 0 0" />
+    <parent
+      link="servoroterf2_Link" />
+    <child
+      link="upperlegf2_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="30.0"
+      velocity="5.0" />
+  </joint>
+  <link
+    name="lowerlegf2_Link">
+    <inertial>
+      <origin
+        xyz="-0.0146078626145645 0.00489748743730422 0.0592378368059043"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="3.46220165025562E-05"
+        ixy="-2.58882667733073E-08"
+        ixz="-3.57644439923662E-07"
+        iyy="3.41638556216698E-05"
+        iyz="1.27497674006723E-06"
+        izz="1.28031038479791E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/lowerlegf2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/lowerlegf2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lowerlegf2"
+    type="revolute">
+    <origin
+      xyz="0.00628000000000288 0.0999387312306899 -0.00350000000000066"
+      rpy="0 0 0" />
+    <parent
+      link="upperlegf2_Link" />
+    <child
+      link="lowerlegf2_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="30.0"
+      velocity="5.0" />
+  </joint>
+  <link
+    name="servob2_Link">
+    <inertial>
+      <origin
+        xyz="-1.12713709893297E-09 -0.00722664389529054 0.020433367504248"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="2.79335635397982E-06"
+        ixy="1.53526700598248E-13"
+        ixz="-2.50081081450251E-14"
+        iyy="1.09887751569209E-06"
+        iyz="3.0510331914777E-08"
+        izz="2.99382347760638E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servob2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servob2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servob2"
+    type="fixed">
+    <origin
+      xyz="-0.044999999999999 0.071750000000003 0"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="servob2_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="servoroterb2_Link">
+    <inertial>
+      <origin
+        xyz="-0.00378879759211461 -0.0115451297270746 -0.0267496504430722"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="7.48514703899148E-06"
+        ixy="4.25204603834958E-07"
+        ixz="1.72362879304459E-09"
+        iyy="6.17848558288742E-06"
+        iyz="3.87820162226551E-09"
+        izz="4.16807249734274E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servoroterb2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/servoroterb2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servoroterb2"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="servob2_Link" />
+    <child
+      link="servoroterb2_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="30.0"
+      velocity="5.0" />
+  </joint>
+  <link
+    name="upperlegb2_Link">
+    <inertial>
+      <origin
+        xyz="0.0156322782166043 -0.0241845153817751 -0.0345176473799781"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="3.78363779213777E-05"
+        ixy="3.58569246813754E-06"
+        ixz="4.52848472857039E-06"
+        iyy="2.51046667616474E-05"
+        iyz="-1.73062887317303E-05"
+        izz="1.60474189638865E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/upperlegb2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/upperlegb2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="upperlegb2"
+    type="revolute">
+    <origin
+      xyz="-0.0451837737110403 -0.0129393428438027 -0.036900000000002"
+      rpy="0 0 0" />
+    <parent
+      link="servoroterb2_Link" />
+    <child
+      link="upperlegb2_Link" />
+    <axis
+      xyz="0.961356887468951 0.275305166889419 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="30.0"
+      velocity="5.0" />
+  </joint>
+  <link
+    name="lowerlegb2_Link">
+    <inertial>
+      <origin
+        xyz="0.0264771211772229 -0.0453328699675907 0.0323827163420254"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="3.3255296669443E-05"
+        ixy="5.06258722816017E-06"
+        ixz="-4.26625546240642E-06"
+        iyy="1.58912732115698E-05"
+        iyz="1.5608261788898E-05"
+        izz="2.09078837707081E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/lowerlegb2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pet_bot_test5/meshes/lowerlegb2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lowerlegb2"
+    type="revolute">
+    <origin
+      xyz="0.0128499340788746 -0.0612170589481467 -0.0781511413091099"
+      rpy="0 0 0" />
+    <parent
+      link="upperlegb2_Link" />
+    <child
+      link="lowerlegb2_Link" />
+    <axis
+      xyz="0.961356887468951 0.275305166889419 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="30.0"
+      velocity="5.0" />
+  </joint>
+
+
+  <!-- ROS 2 Control Hardware Interface for Ignition -->
+  <ros2_control name="PetBotSystem" type="system">
+    <hardware>
+       <plugin>ign_ros2_control/IgnitionSystem</plugin>
+    </hardware>
+
+    <!-- Front Left Leg -->
+    <joint name="servoroterf1">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="upperlegf1">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="lowerlegf1">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <!-- Front Right Leg -->
+    <joint name="servoroterf2">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="upperlegf2">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="lowerlegf2">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <!-- Rear Left Leg -->
+    <joint name="servoroter1">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="upperlegb1">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="lowerlegb1">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <!-- Rear Right Leg -->
+    <joint name="servoroterb2">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="upperlegb2">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="lowerlegb2">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+  </ros2_control>
+
+  <!-- ================== TRANSMISSIONS FOR ALL 12 JOINTS ================== -->
+
+  <!-- FRONT LEFT LEG -->
+  <transmission name="trans_servoroterf1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="servoroterf1">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+    </joint>
+    <actuator name="servoroterf1_motor">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="trans_upperlegf1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="upperlegf1">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+    </joint>
+    <actuator name="upperlegf1_motor">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="trans_lowerlegf1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="lowerlegf1">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+    </joint>
+    <actuator name="lowerlegf1_motor">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- FRONT RIGHT LEG -->
+  <transmission name="trans_servoroterf2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="servoroterf2">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+    </joint>
+    <actuator name="servoroterf2_motor">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="trans_upperlegf2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="upperlegf2">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+    </joint>
+    <actuator name="upperlegf2_motor">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="trans_lowerlegf2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="lowerlegf2">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+    </joint>
+    <actuator name="lowerlegf2_motor">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- REAR LEFT LEG -->
+  <transmission name="trans_servoroter1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="servoroter1">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+    </joint>
+    <actuator name="servoroter1_motor">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="trans_upperlegb1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="upperlegb1">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+    </joint>
+    <actuator name="upperlegb1_motor">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="trans_lowerlegb1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="lowerlegb1">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+    </joint>
+    <actuator name="lowerlegb1_motor">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- REAR RIGHT LEG -->
+  <transmission name="trans_servoroterb2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="servoroterb2">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+    </joint>
+    <actuator name="servoroterb2_motor">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="trans_upperlegb2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="upperlegb2">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+    </joint>
+    <actuator name="upperlegb2_motor">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="trans_lowerlegb2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="lowerlegb2">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+    </joint>
+    <actuator name="lowerlegb2_motor">
+      <hardwareInterface>hardware_interface/PositionCommandInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <gazebo>
+    <plugin filename="libign_ros2_control-system.so" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+          <parameters>$(find pet_bot_test5)/config/pet_bot_controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+
+  <!-- Ignition ↔ ROS 2 Control Bridge -->
+  <!--gazebo>
+    <plugin name="gz_ros2_control" filename="libgz_ros2_control-system.so">
+      <ros>
+        <parameters>$(find pet_bot_test5)/config/pet_bot_controllers.yaml</parameters>
+      </ros>
+    </plugin>
+  </gazebo-->
+
+
+
+
+</robot>
