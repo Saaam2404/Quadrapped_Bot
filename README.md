@@ -34,4 +34,4 @@ To start the quadruped robot in **simulation mode**, use the provided launch fil
 ```bash
 colcon build
 source install/setup.bash
-ros2 launch pet_bot sim.launch.py
+ros2 launch pet_bot_test5 sim.launch.py
