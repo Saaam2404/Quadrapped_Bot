@@ -17,6 +17,9 @@ install(
 # Install the Python control script
 install(PROGRAMS
   scripts/starting_gait.py
+  scripts/forward_gait.py
+  scripts/troting_hc.py
+  scripts/backward_gait.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

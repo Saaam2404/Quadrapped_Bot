@@ -17,36 +17,36 @@ import time
 
 # Front legs should move the SAME but mirrored
 R_FRONT_SIT_THIGH = 0.0    
-R_FRONT_SIT_KNEE  = -1.0   
+R_FRONT_SIT_KNEE  = -0.8  
 
 L_FRONT_SIT_THIGH = 0.0    
-L_FRONT_SIT_KNEE  = 1.0     # <-- MIRRORED SIGN
+L_FRONT_SIT_KNEE  = 0.8    # <-- MIRRORED SIGN
 
 # Rear legs should bend opposite directions
-R_REAR_SIT_THIGH  = 0.5    
-R_REAR_SIT_KNEE   = -1.5   
+R_REAR_SIT_THIGH  = 0.0  
+R_REAR_SIT_KNEE   = -0.8 
 
-L_REAR_SIT_THIGH  = -0.5   
-L_REAR_SIT_KNEE   = 1.5    
+L_REAR_SIT_THIGH  = -0.0   
+L_REAR_SIT_KNEE   = 0.8   
 
 # ------------------------------------------------------------------------------
 # CROUCH POSE (FIXED — LEFT SIDE MUST BE MIRROR OF RIGHT)
 # ------------------------------------------------------------------------------
-R_FRONT_CROUCH_HEIGHT = 0.4
+R_FRONT_CROUCH_HEIGHT = 0.0
 R_FRONT_CROUCH_KNEE   = -0.4
 
-R_REAR_CROUCH_HEIGHT  = 0.4
-R_REAR_CROUCH_KNEE    = -0.4
+R_REAR_CROUCH_HEIGHT  = 0.0
+R_REAR_CROUCH_KNEE    = -0.8
 
 # Mirror signs for LEFT legs
-L_FRONT_CROUCH_HEIGHT = -0.4
+L_FRONT_CROUCH_HEIGHT = 0.0
 L_FRONT_CROUCH_KNEE   = 0.4
 
-L_REAR_CROUCH_HEIGHT  = -0.4
-L_REAR_CROUCH_KNEE    = 0.4
+L_REAR_CROUCH_HEIGHT  = 0.0
+L_REAR_CROUCH_KNEE    = 0.8
 
 # Duration
-MOVE_DURATION = 2.0
+MOVE_DURATION = 0.5
 
 # ==============================================================================
 # POSE DEFINITIONS

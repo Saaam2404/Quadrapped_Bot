@@ -43,15 +43,20 @@ forward_position_controller:
       - lowerlegb2
 
     gains:
-      servoroterf1: {p: 10.0, i: 0.0, d: 20.0}
-      upperlegf1:   {p: 10.0, i: 0.0, d: 20.0}
-      lowerlegf1:   {p: 10.0, i: 0.0, d: 20.0}
-      servoroterf2: {p: 10.0, i: 0.0, d: 20.0}
-      upperlegf2:   {p: 10.0, i: 0.0, d: 20.0}
-      lowerlegf2:   {p: 10.0, i: 0.0, d: 20.0}
-      servoroter1:  {p: 10.0, i: 0.0, d: 20.0}
-      upperlegb1:   {p: 10.0, i: 0.0, d: 20.0}
-      lowerlegb1:   {p: 10.0, i: 0.0, d: 20.0}
-      servoroterb2: {p: 10.0, i: 0.0, d: 20.0}
-      upperlegb2:   {p: 10.0, i: 0.0, d: 20.0}
-      lowerlegb2:   {p: 10.0, i: 0.0, d: 20.0}
+      # ---- HIP / SERVO (soft) ----
+      servoroterf1: {p: 4.0, i: 0.0, d: 8.0}
+      servoroterf2: {p: 4.0, i: 0.0, d: 8.0}
+      servoroter1:  {p: 4.0, i: 0.0, d: 8.0}
+      servoroterb2: {p: 4.0, i: 0.0, d: 8.0}
+
+      # ---- THIGH (medium) ----
+      upperlegf1:   {p: 8.0, i: 0.0, d: 15.0}
+      upperlegf2:   {p: 8.0, i: 0.0, d: 15.0}
+      upperlegb1:   {p: 9.0, i: 0.0, d: 18.0}
+      upperlegb2:   {p: 9.0, i: 0.0, d: 18.0}
+
+      # ---- KNEE (stiff, load-bearing) ----
+      lowerlegf1:   {p: 25.0, i: 0.0, d: 30.0}
+      lowerlegf2:   {p: 25.0, i: 0.0, d: 30.0}
+      lowerlegb1:   {p: 30.0, i: 0.0, d: 35.0}
+      lowerlegb2:   {p: 30.0, i: 0.0, d: 35.0}
