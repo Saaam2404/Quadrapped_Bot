@@ -2,7 +2,7 @@
 
 A ROS 2–based **quadruped (pet) robot** project implementing gait control using
 **inverse kinematics (IK)**.  
-This repository focuses on stable locomotion such as **crawl gait**, with future
+This repository focuses on stable locomotion such as **trot gait**, with future
 extensions to trot, sideways, and backward motion.
 
 ---
@@ -19,7 +19,7 @@ extensions to trot, sideways, and backward motion.
 ##  Tech Stack
 - **ROS 2** (rclpy)
 - **Python 3**
-- **NumPy / Math**
+- **Gazebo Ignition**
 - Designed for simulation & real hardware compatibility
 
 ---
