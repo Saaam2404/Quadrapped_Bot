@@ -20,6 +20,8 @@ install(PROGRAMS
   scripts/forward_gait.py
   scripts/troting_hc.py
   scripts/backward_gait.py
+  scripts/sideward_gait.py
+  scripts/llm_starting_gait.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

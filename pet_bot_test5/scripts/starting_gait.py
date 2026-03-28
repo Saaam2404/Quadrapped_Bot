@@ -7,9 +7,6 @@ import termios
 import tty
 import time
 
-# ==============================================================================
-# 🛠️ --- TUNING CONSTANTS (EDIT THESE!) --- 🛠️
-# ==============================================================================
 
 # ------------------------------------------------------------------------------
 # SIT POSE (FIXED SYMMETRY)
@@ -86,7 +83,7 @@ class PetBotCommander(Node):
         )
         self.current_pose = list(POSE_STAND)
         
-        print("\n🐶 PET BOT CONTROLLER INITIALIZED 🐶")
+        print("\n PET BOT CONTROLLER INITIALIZED ")
         print("-------------------------------------")
         print(f"Movement Speed: {MOVE_DURATION} seconds")
         print("Controls:")
