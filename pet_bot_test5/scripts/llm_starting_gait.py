@@ -2,10 +2,6 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray
-import sys
-import termios
-import tty
-import time
 import threading
 import os
 
@@ -44,8 +40,8 @@ def run_llm(node):
     tools = make_tools(node)
 
     llm = ChatGoogleGenerativeAI(
-        model="models/gemini-2.0-flash",
-        google_api_key=os.environ["GOOGLE_API_KEY"],
+        model="gemini-2.5-flash",
+        google_api_key=os.getenv("GOOGLE_API_KEY"),
         temperature=0
     )
 
