@@ -14,23 +14,23 @@ L2 = 0.08
 # GAIT PARAMETERS
 # ============================================================
 RATE = 50.0
-CYCLE_TIME = 1.2
+CYCLE_TIME = 0.8
 
-STEP_HEIGHT = 0.015
+STEP_HEIGHT = 0.025
 BODY_HEIGHT = 0.17
-SIDE_STEP = 0.04
+SIDE_STEP = 0.03
 
 STARTUP_HOLD = 1.0
 
 # +1 = move LEFT
 # -1 = move RIGHT
-DIRECTION = 1
+DIRECTION=1
 
 LEGS = ["FL", "FR", "RL", "RR"]
 LEG_INDEX = {"FL": 0, "FR": 3, "RL": 6, "RR": 9}
 
-SWING_A = ["FL", "RR"]
-SWING_B = ["FR", "RL"]
+SWING_A = ["FL", "RL"]
+SWING_B = ["FR", "RR"]
 
 # ============================================================
 # JOINT SIGN CORRECTIONS (VERY IMPORTANT)
@@ -74,28 +74,28 @@ def leg_ik_3d(x, y, z):
 # ============================================================
 # SIDEWAYS FOOT TRAJECTORY
 # ============================================================
-def foot_position(s, swing):
+def foot_position(s, swing,leg):
 
     if swing:
-        # leg in air
+        # swing phase
         y = -SIDE_STEP/2 + SIDE_STEP * s
         z = BODY_HEIGHT - STEP_HEIGHT * math.sin(math.pi * s)
+
     else:
-        # stance phase
+        # stance phase (push body)
         y = SIDE_STEP/2 - SIDE_STEP * s
         z = BODY_HEIGHT
 
-    x = 0.02   # slight forward bias for balance
-    y = DIRECTION * y
+    x = 0.02
+    y = y
 
     return x, y, z
-
 # ============================================================
 # ROS NODE
 # ============================================================
 class SideWalk(Node):
 
-    def __init__(self):
+    def __init__(self,steps):
         super().__init__("side_walk_controller")
 
         self.pub = self.create_publisher(
@@ -108,6 +108,10 @@ class SideWalk(Node):
         self.timer = self.create_timer(1.0 / RATE, self.update)
 
         self.get_logger().info("Sideways walking started")
+
+        self.prev_phase = 0.0
+        self.cycles = 0
+        self.max_cycles = steps
 
     # --------------------------------------------------------
 
@@ -123,12 +127,36 @@ class SideWalk(Node):
 
         phase = (t / CYCLE_TIME) % 1.0
 
-        if phase < 0.5:
+        if phase < self.prev_phase:
+            self.cycles += 1
+
+        self.prev_phase = phase
+
+        if self.cycles >= self.max_cycles:
+            self.publish_neutral()
+            self.get_logger().info("Sideways step complete")
+            self.timer.cancel()
+            return
+
+        # Phase 1: left step
+        if phase < 0.25:
             swing_legs = SWING_A
-            s = phase * 2
-        else:
+            s = phase * 4
+
+        # Phase 2: pause
+        elif phase < 0.5:
+            swing_legs = []
+            s = 0
+
+        # Phase 3: right step
+        elif phase < 0.75:
             swing_legs = SWING_B
-            s = (phase - 0.5) * 2
+            s = (phase - 0.5) * 4
+
+        # Phase 4: pause
+        else:
+            swing_legs = []
+            s = 0
 
         cmd = [0.0] * 12
 
@@ -137,11 +165,14 @@ class SideWalk(Node):
 
             swing = leg in swing_legs
 
-            x, y, z = foot_position(s, swing)
+            x, y, z = foot_position(s, swing,leg)
+
+            if leg in ["FR", "RR"]:
+                y = DIRECTION*y
 
             hip_ik, thigh_ik, knee_ik = leg_ik_3d(x, y, z)
 
-            hip   = HIP_SIGN[leg]   * hip_ik
+            hip   = DIRECTION * HIP_SIGN[leg] * hip_ik
             thigh = THIGH_SIGN[leg] * thigh_ik
             knee  = KNEE_SIGN[leg]  * knee_ik
 
@@ -169,8 +200,16 @@ class SideWalk(Node):
 
 # ============================================================
 def main():
+    steps = int(input("Enter number of sideways steps: "))+1
+    direction=int(input("Enter direction \n" \
+                        "Left=1\n" \
+                        "Right=-1\n" \
+                        ": "))
+    
+    global DIRECTION
+    DIRECTION=direction
     rclpy.init()
-    node = SideWalk()
+    node = SideWalk(steps)
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()

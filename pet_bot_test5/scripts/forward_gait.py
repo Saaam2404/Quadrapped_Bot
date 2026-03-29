@@ -14,7 +14,7 @@ L2 = 0.08
 # GAIT
 # ============================================================
 RATE = 50.0
-CYCLE_TIME = 1.2
+CYCLE_TIME = 0.8
 STEP_LENGTH = 0.07
 STEP_HEIGHT = 0.02
 BODY_HEIGHT = 0.15
@@ -76,7 +76,7 @@ def foot_position(s, swing):
 # ============================================================
 class HybridIKTrot(Node):
 
-    def __init__(self):
+    def __init__(self,steps):
         super().__init__("hybrid_ik_trot_world")
 
         self.pub = self.create_publisher(
@@ -87,6 +87,10 @@ class HybridIKTrot(Node):
 
         self.t0 = self.get_clock().now().nanoseconds * 1e-9
         self.timer = self.create_timer(1.0 / RATE, self.update)
+
+        self.prev_phase = 0.0
+        self.cycles = 0
+        self.max_cycles = steps
 
         self.get_logger().info("Forward motion started")
 
@@ -99,6 +103,19 @@ class HybridIKTrot(Node):
             return
 
         phase = ((now - self.t0) / CYCLE_TIME) % 1.0
+        
+        if phase < self.prev_phase:
+            self.cycles += 1
+            self.get_logger().info(f"Step {self.cycles} completed")
+
+        self.prev_phase = phase
+
+        if self.cycles >= self.max_cycles:
+            self.publish_neutral()
+            self.get_logger().info("Forward step complete")
+            self.timer.cancel()
+            self.get_logger().info("Motion finished")
+            return
 
         if phase < 0.5:
             swing_legs = SWING_A
@@ -137,8 +154,9 @@ class HybridIKTrot(Node):
 
 # ============================================================
 def main():
+    steps = int(input("Enter number of steps: "))
     rclpy.init()
-    node = HybridIKTrot()
+    node = HybridIKTrot(steps)
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()

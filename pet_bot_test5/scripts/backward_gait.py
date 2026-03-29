@@ -66,9 +66,9 @@ def foot_position(s, swing):
 # ============================================================
 # NODE
 # ============================================================
-class HybridIKTrot(Node):
+class HybridIKTrot_Backward(Node):
 
-    def __init__(self):
+    def __init__(self,steps):
         super().__init__("hybrid_ik_trot_backward")
 
         self.pub = self.create_publisher(
@@ -85,18 +85,53 @@ class HybridIKTrot(Node):
         self.stance_z = {leg: BODY_HEIGHT for leg in LEGS}
         self.prev_swing = {leg: False for leg in LEGS}
 
-        self.get_logger().info("✅ Stable backward IK trot started")
+        self.prev_phase = 0.0
+        self.cycles = 0
+        self.max_cycles = steps
 
+        self.returning_neutral = False
+        self.start_pose_done = False
+
+        self.get_logger().info("Backward motion started")
     # ========================================================
     def update(self):
         now = self.get_clock().now().nanoseconds * 1e-9
         t = now - self.t0
 
-        if t < STARTUP_HOLD:
-            self.publish_neutral()
+        # move robot to start pose before trot
+        if not self.start_pose_done:
+            if t < STARTUP_HOLD:
+                self.publish_start_pose()
+                return
+            else:
+                self.start_pose_done = True
+                self.t0 = now   # reset gait timer
+                return
+
+        # hold neutral before shutting down
+        if self.returning_neutral:
+            if now - self.neutral_start > 1.5:
+                self.timer.cancel()
+                self.get_logger().info("Motion finished")
+            else:
+                self.publish_neutral()
             return
 
         phase = ((now - self.t0) / CYCLE_TIME) % 1.0
+
+        if phase < self.prev_phase:
+            self.cycles += 1
+            self.get_logger().info(f"Step {self.cycles} completed")
+
+        self.prev_phase = phase
+
+        if self.cycles >= self.max_cycles and not self.returning_neutral:
+            self.publish_neutral()
+            self.get_logger().info("Returning to neutral position")
+
+            self.returning_neutral = True
+            self.neutral_start = now
+            return
 
         if phase < 0.5:
             swing_legs = SWING_A
@@ -153,17 +188,28 @@ class HybridIKTrot(Node):
     def publish_neutral(self):
         msg = Float64MultiArray()
         msg.data = [
+            -0.0, 0.0, -0.0,
+             0.0, 0.0, -0.0,
+             0.0, 0.0, -0.0,
+            -0.0, 0.0, -0.0
+        ]
+        self.pub.publish(msg)
+
+    def publish_start_pose(self):
+        msg = Float64MultiArray()
+        msg.data = [
             -0.4, 0.0, -0.6,
-             0.4, 0.0, -0.6,
-             0.4, 0.0, -0.6,
+            0.4, 0.0, -0.6,
+            0.4, 0.0, -0.6,
             -0.4, 0.0, -0.6
         ]
         self.pub.publish(msg)
 
 # ============================================================
 def main():
+    steps = int(input("Enter number of steps: "))
     rclpy.init()
-    node = HybridIKTrot()
+    node = HybridIKTrot_Backward(steps)
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()
