@@ -84,11 +84,22 @@ def generate_launch_description():
         ]
     )
 
+    # Bridge Gazebo pose to ROS
+    bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/model/pet_bot_test5/pose@geometry_msgs/msg/PoseArray@gz.msgs.Pose_V"
+        ],
+        output="screen"
+    )
+
     return LaunchDescription([
         info,
         gazebo,
         robot_state_publisher,
         spawn_entity,
         load_joint_state_broadcaster,
-        load_forward_position_controller
+        load_forward_position_controller,
+        bridge
     ])

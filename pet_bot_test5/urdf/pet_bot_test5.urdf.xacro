@@ -42,6 +42,7 @@
       </geometry>
     </collision>
   </link>
+
   <link
     name="servob1_Link">
     <inertial>
@@ -1176,6 +1177,24 @@
   <gazebo>
     <plugin filename="libign_ros2_control-system.so" name="ign_ros2_control::IgnitionROS2ControlPlugin">
           <parameters>$(find pet_bot_test5)/config/pet_bot_controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+  <gazebo>
+    <plugin
+        filename="libignition-gazebo-odometry-publisher-system.so"
+        name="ignition::gazebo::systems::OdometryPublisher">
+
+        <odom_frame>odom</odom_frame>
+        <robot_base_frame>base_link</robot_base_frame>
+
+        <odom_topic>/odom</odom_topic>
+
+        <publish_odometry>true</publish_odometry>
+        <publish_tf>true</publish_tf>
+
+        <update_rate>50</update_rate>
+
     </plugin>
   </gazebo>
 

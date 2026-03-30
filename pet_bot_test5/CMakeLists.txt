@@ -22,6 +22,8 @@ install(PROGRAMS
   scripts/backward_gait.py
   scripts/sideward_gait.py
   scripts/llm_starting_gait.py
+  scripts/navigation.py
+  scripts/gazebo_pose_reader.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
