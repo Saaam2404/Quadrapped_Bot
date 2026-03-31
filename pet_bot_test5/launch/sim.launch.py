@@ -94,6 +94,15 @@ def generate_launch_description():
         output="screen"
     )
 
+    camera_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/camera@sensor_msgs/msg/Image@ignition.msgs.Image"
+        ],
+        output="screen"
+    )
+
     return LaunchDescription([
         info,
         gazebo,
@@ -101,5 +110,6 @@ def generate_launch_description():
         spawn_entity,
         load_joint_state_broadcaster,
         load_forward_position_controller,
-        bridge
+        bridge,
+        camera_bridge
     ])

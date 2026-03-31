@@ -952,6 +952,37 @@
       velocity="5.0" />
   </joint>
 
+  <link name="camera_link">
+
+    <visual>
+      <geometry>
+        <box size="0.03 0.03 0.03"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="0.03 0.03 0.03"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0"/>
+      <inertia
+        ixx="0.0001" ixy="0" ixz="0"
+        iyy="0.0001" iyz="0"
+        izz="0.0001"/>
+    </inertial>
+
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.003 -0.13 0.030" rpy="0 0 -1.57"/>
+  </joint>
+
 
   <!-- ROS 2 Control Hardware Interface for Ignition -->
   <ros2_control name="PetBotSystem" type="system">
@@ -1035,6 +1066,37 @@
     </joint>
 
   </ros2_control>
+
+  <!--camera link sensor-->
+
+  <gazebo reference="camera_link">
+
+    <sensor name="camera" type="camera">
+
+      <always_on>true</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+
+      <topic>/camera</topic>
+
+    </sensor>
+
+  </gazebo>
 
   <!-- ================== TRANSMISSIONS FOR ALL 12 JOINTS ================== -->
 
@@ -1208,7 +1270,13 @@
     </plugin>
   </gazebo-->
 
-
-
+   
+  <gazebo>
+    <plugin
+        filename="ignition-gazebo-sensors-system"
+        name="ignition::gazebo::systems::Sensors">
+        <render_engine>ogre2</render_engine>
+    </plugin>
+  </gazebo>
 
 </robot>

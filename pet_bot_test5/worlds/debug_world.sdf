@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.7">
   <world name="default">
+
     <!-- Disable gravity -->
     <gravity>0 0 -9.8</gravity>
 
@@ -27,6 +28,13 @@
       <uri>model://sun</uri>
     </include>
 
+    <!-- <plugin
+      filename="ignition-gazebo-sensors-system"
+      name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin> -->
+
+
     <!-- ✅ Gazebo Sim (Ignition) ROS 2 Control Plugin ->
     <plugin
       filename="libgz_ros2_control-system.so"
@@ -42,6 +50,5 @@
         name="gz_ros2_control::GazeboSimROS2ControlPlugin">
     </plugin>
     </gazebo-->
-
   </world>
 </sdf>
