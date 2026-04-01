@@ -98,10 +98,20 @@ def generate_launch_description():
         package="ros_gz_bridge",
         executable="parameter_bridge",
         arguments=[
-            "/camera@sensor_msgs/msg/Image@ignition.msgs.Image"
+            "/depth_camera@sensor_msgs/msg/Image@ignition.msgs.Image"
         ],
         output="screen"
     )
+
+    point_cloud_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/depth_camera/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked"
+        ],
+        output="screen"
+    )
+
 
     return LaunchDescription([
         info,
@@ -111,5 +121,6 @@ def generate_launch_description():
         load_joint_state_broadcaster,
         load_forward_position_controller,
         bridge,
-        camera_bridge
+        camera_bridge,
+        point_cloud_bridge
     ])

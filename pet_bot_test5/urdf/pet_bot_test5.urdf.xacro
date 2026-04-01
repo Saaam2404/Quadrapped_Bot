@@ -952,12 +952,15 @@
       velocity="5.0" />
   </joint>
 
-  <link name="camera_link">
+  <link name="depth_camera">
 
     <visual>
       <geometry>
         <box size="0.03 0.03 0.03"/>
       </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
     </visual>
 
     <collision>
@@ -977,9 +980,9 @@
 
   </link>
 
-  <joint name="camera_joint" type="fixed">
+  <joint name="depth_camera_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="camera_link"/>
+    <child link="depth_camera"/>
     <origin xyz="0.003 -0.13 0.030" rpy="0 0 -1.57"/>
   </joint>
 
@@ -1069,12 +1072,12 @@
 
   <!--camera link sensor-->
 
-  <gazebo reference="camera_link">
+  <gazebo reference="depth_camera">
 
-    <sensor name="camera" type="camera">
+    <sensor name="depth_camera" type="depth_camera">
 
       <always_on>true</always_on>
-      <update_rate>30</update_rate>
+      <update_rate>10</update_rate>
       <visualize>true</visualize>
 
       <camera>
@@ -1083,16 +1086,20 @@
         <image>
           <width>640</width>
           <height>480</height>
-          <format>R8G8B8</format>
+          <!-- <format>R8G8B8</format> -->
         </image>
 
         <clip>
           <near>0.1</near>
-          <far>100</far>
+          <far>10.0</far>
         </clip>
       </camera>
 
-      <topic>/camera</topic>
+      <depth_camera>
+        <output>depth</output>
+      </depth_camera>
+
+      <topic>/depth_camera</topic>
 
     </sensor>
 
