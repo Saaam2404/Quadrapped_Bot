@@ -27,28 +27,5 @@
     <include>
       <uri>model://sun</uri>
     </include>
-
-    <!-- <plugin
-      filename="ignition-gazebo-sensors-system"
-      name="ignition::gazebo::systems::Sensors">
-      <render_engine>ogre2</render_engine>
-    </plugin> -->
-
-
-    <!-- ✅ Gazebo Sim (Ignition) ROS 2 Control Plugin ->
-    <plugin
-      filename="libgz_ros2_control-system.so"
-      name="gz_ros2_control::IgnitionROS2ControlPlugin">
-      <!- Optional: you can specify the ROS parameters file ->
-      <ros>
-        <parameters>/home/samarpan/pet_bot/install/pet_bot_test5/share/pet_bot_test5/config/pet_bot_controllers.yaml</parameters>
-      </ros>
-    </plugin>
-    <gazebo>
-    <plugin
-        filename="libgz_ros2_control-system.so"
-        name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-    </plugin>
-    </gazebo-->
   </world>
 </sdf>

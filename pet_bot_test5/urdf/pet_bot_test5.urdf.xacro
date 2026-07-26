@@ -1268,15 +1268,6 @@
   </gazebo>
 
 
-  <!-- Ignition ↔ ROS 2 Control Bridge -->
-  <!--gazebo>
-    <plugin name="gz_ros2_control" filename="libgz_ros2_control-system.so">
-      <ros>
-        <parameters>$(find pet_bot_test5)/config/pet_bot_controllers.yaml</parameters>
-      </ros>
-    </plugin>
-  </gazebo-->
-
    
   <gazebo>
     <plugin
