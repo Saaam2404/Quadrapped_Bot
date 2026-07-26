@@ -38,5 +38,5 @@ source install/setup.bash
 ## Launch
 
 ```bash
-ros2 launch pet_bot_test5 sim_12_joints.launch.py
+ros2 launch pet_bot_test5 sim.launch.py
 ```
