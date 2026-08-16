@@ -57,7 +57,7 @@ def leg_ik(x, z):
 def foot_position(s, swing):
     if swing:
         x = DIRECTION * (-STEP_LENGTH / 2 + STEP_LENGTH * s)
-        z = BODY_HEIGHT - STEP_HEIGHT * math.sin(math.pi * s)
+        z = BODY_HEIGHT - STEP_HEIGHT * (math.sin(math.pi * s))**2
     else:
         x = DIRECTION * (STEP_LENGTH / 2)
         z = BODY_HEIGHT
