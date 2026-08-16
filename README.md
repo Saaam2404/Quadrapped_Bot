@@ -1,42 +1,57 @@
 # Pet Bot Test5
 
-## Clone the repository
+## Clone Repository
 
 ```bash
-mkdir -p ~/petbot_ws/src
-cd ~/petbot_ws/src
-
-git clone <YOUR_GITHUB_REPO_URL>
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+git clone <GITHUB_REPO_URL>
 ```
 
-## Go to the workspace
+## Install Dependencies
 
 ```bash
-cd ~/petbot
-```
-
-## Run the installation script
-
-```bash
-chmod +x src/pet_bot_test5/requirements.sh
+cd ~/ros2_ws
 bash src/pet_bot_test5/requirements.sh
 ```
 
-## Install remaining ROS dependencies
+## Install ROS Dependencies
 
 ```bash
 source /opt/ros/humble/setup.bash
 rosdep install --from-paths src --ignore-src -r -y
 ```
 
-## Source the workspace
+## Build
 
 ```bash
+colcon build --symlink-install
 source install/setup.bash
 ```
 
-## Launch
+## Launch Simulation
 
 ```bash
 ros2 launch pet_bot_test5 sim.launch.py
 ```
+
+## Test Motion Scripts
+
+### Stand Up
+
+```bash
+ros2 run pet_bot_test5 starting_gait.py
+```
+
+### Forward Walk
+
+```bash
+ros2 run pet_bot_test5 forward_gait.py
+```
+
+### Backward Walk
+
+```bash
+ros2 run pet_bot_test5 backward_gait.py
+```
+
